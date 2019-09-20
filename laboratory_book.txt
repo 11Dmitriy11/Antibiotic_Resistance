@@ -1,0 +1,5 @@
+wc -l amp_res_1.fastq >> ../laboratory_book.txt 
+
+1823504 amp_res_1.fastq
+
+455876 reads
