@@ -1,5 +1,15 @@
+wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/005/845/GCA_000005845.2_ASM584v2/GCA_000005845.2_ASM584v2_genomic.fna.gz
+
+gunzip GCA_000005845.2_ASM584v2_genomic.fna.gz 
+
+wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/005/845/GCA_000005845.2_ASM584v2/GCA_000005845.2_ASM584v2_genomic.gff.gz
+
+gunzip GCA_000005845.2_ASM584v2_genomic.gff.gz 
+
 wc -l amp_res_1.fastq >> ../laboratory_book.txt 
 
 1823504 amp_res_1.fastq
 
 455876 reads
+
+fastqc -0 . amp_res_1.fastqc amp_res_2.fastqc 
