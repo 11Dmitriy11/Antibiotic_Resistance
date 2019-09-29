@@ -13,3 +13,51 @@ wc -l amp_res_1.fastq >> ../laboratory_book.txt
 455876 reads
 
 fastqc -0 . amp_res_1.fastqc amp_res_2.fastqc 
+
+TrimmomaticPE -phred33 amp_res_1.fastq amp_res_2.fastq _1P.fq _1U.fq _2P.fq _2U.fq LEADING:20 TRAILING:20 SLIDINGWINDOW:10:20 MINLEN:20
+TrimmomaticPE: Started with arguments:
+ -phred33 amp_res_1.fastq amp_res_2.fastq _1P.fq _1U.fq _2P.fq _2U.fq LEADING:20 TRAILING:20 SLIDINGWINDOW:10:20 MINLEN:20
+Multiple cores found: Using 2 threads
+Input Read Pairs: 455876 Both Surviving: 446259 (97,89%) Forward Only Surviving: 9216 (2,02%) Reverse Only Surviving: 273 (0,06%) Dropped: 128 (0,03%)
+TrimmomaticPE: Completed successfully
+
+
+wc -l _1P.fq         
+1785036 _1P.fq
+
+wc -l _2P.fq
+1785036 _2P.fq
+
+wc -l _1U.fq
+36864 _1U.fq
+
+wc -l _2U.fq
+1092 _2U.fq
+
+Per base sequence quality increased
+
+bwa index GCA_000005845.2_ASM584v2_genomic.fna 
+
+bwa mem GCA_000005845.2_ASM584v2_genomic.fna _1P.fq _2P.fq > alignment.sam
+
+samtools view -S -b alignment.sam > alignment.bam
+
+92776 + 0 in total (QC-passed reads + QC-failed reads)
+0 + 0 secondary
+258 + 0 supplementary
+0 + 0 duplicates
+891649 + 0 mapped (99.87% : N/A)
+892518 + 0 paired in sequencing
+446259 + 0 read1
+446259 + 0 read2
+888554 + 0 properly paired (99.56% : N/A)
+890412 + 0 with itself and mate mapped
+979 + 0 singletons (0.11% : N/A)
+0 + 0 with mate mapped to a different chr
+0 + 0 with mate mapped to a different chr (mapQ>=5)
+
+
+
+
+
+
